@@ -58,9 +58,12 @@ EXPOSE 5000
 
 # The actual flask app
 COPY changedetectionio /app/changedetectionio
+COPY scripts /app/scripts
 # The eventlet server wrapper
 COPY changedetection.py /app/changedetection.py
 
 WORKDIR /app
 
-CMD [ "python", "./changedetection.py" , "-d", "/datastore"]
+# CMD [ "python", "./changedetection.py" , "-d", "/datastore"]
+
+CMD ["bash", "./scripts/run.sh"]
